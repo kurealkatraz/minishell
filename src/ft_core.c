@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:13:59 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/26 17:00:38 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/27 17:31:38 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		main(int argc, char **argv, char **envp)
 	(void)argc;
 	evp = ft_import_native_envp(NULL, envp);
 	evp = ft_shell_lvls_import(evp);
-	ft_print_sto(evp);
 	evp = ft_free_sto_chain(evp);
 	return (0);
 }

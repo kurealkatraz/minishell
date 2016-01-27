@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 16:06:13 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/26 17:02:51 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/27 17:28:37 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ t_sto	*ft_new_sto(t_sto *old, char *name, char *value)
 	n->prev = NULL;
 	if (old)
 		old->prev = n;
-	n->name = name == NULL ? NULL : ft_strdup(name);
-	n->value = value == NULL ? NULL : ft_strdup(value);
+	n->name = ft_strdup(name);
+	n->value = ft_strdup(value);
 	return (n);
 }
 

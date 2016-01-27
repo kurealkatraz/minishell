@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/22 15:21:07 by mgras             #+#    #+#             */
-/*   Updated: 2015/03/22 15:22:03 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/27 17:30:53 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ char	*ft_strndup(const char *s1, size_t size)
 	if (!(new = (char*)malloc(sizeof(char) * (size + 1))))
 		return (NULL);
 	new = ft_strncpy(new, s1, size);
+	new[size] = '\0';
 	return (new);
 }
