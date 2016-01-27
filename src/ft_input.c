@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 17:32:25 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/27 21:36:01 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/27 21:57:17 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ t_sto	*ft_input_core(t_sto *envp)
 		ft_strdel(&line);
 		ft_prompt_imput_field(envp);
 	}
+	ft_strdel(&line);
 	return (envp);
 }

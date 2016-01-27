@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/27 21:30:16 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/27 21:56:36 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ char				*ft_clean_line(char *line);
 /*
 **	ft_colors.c
 */
-void	ft_prompt_name(t_sto *envp);
-void	ft_prompt_tree(void);
-void	ft_prompt_imput_field(t_sto *envp);
+void				ft_prompt_name(t_sto *envp);
+void				ft_prompt_tree(void);
+void				ft_prompt_imput_field(t_sto *envp);
 
 #endif

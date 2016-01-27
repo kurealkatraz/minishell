@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 20:23:48 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/27 20:54:23 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/27 21:56:41 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ char	*ft_strclcpy(char *dst, char *src)
 		else
 			dst[ss++] = src[ts++];
 	}
+	dst[ss] = '\0';
 	return (dst);
 }
 
