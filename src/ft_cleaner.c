@@ -6,61 +6,99 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 20:23:48 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/27 21:56:41 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 00:28:05 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_get_c_len(char *line)
+int		ft_get_clen(char *src)
 {
-	int		i;
 	int		len;
+	int		add;
 
-	i = 0;
 	len = 0;
-	while (line[i])
+	add = 0;
+	while (src[len])
 	{
-		if (line[i] == ' ' || line[i] == '\t')
-			while (line[i] && (line[i] == ' ' || line[i] == '\t'))
-				i++;
-		else
-			i++;
-		if (line[i])
-			len++;
+		if (src[len] == ';')
+			add += 2;
+		len++;
 	}
-	return (len);
+	len += add;
+	return (len + 1);
 }
 
-char	*ft_strclcpy(char *dst, char *src)
+char	*ft_clean_blank(char *line, char *n, int *po2, int *po1)
 {
-	int		ss;
-	int		ts;
+	n[*po1] = ' ';
+	while (line[*po2] && (line[*po2] == ' ' || line[*po2] == '\t'))
+		*po2 = *po2 + 1;
+	*po1 = *po1 + 1;
+	return (line);
+}
 
-	ss = 0;
-	ts = 0;
-	while (src[ts])
+char	*ft_skip_brakets(char *line, char *n, int *po2, int *po1)
+{
+	char	b;
+
+	b = line[*po2];
+	while (line[*po2])
 	{
-		if (src[ts] == ' ' || src[ts] == '\t')
-		{
-			dst[ss++] = ' ';
-			while (src[ts] && (src[ts] == ' ' || src[ts] == '\t'))
-				ts++;
-		}
-		else
-			dst[ss++] = src[ts++];
+		n[*po1] = line[*po2];
+		*po1 = *po1 + 1;
+		*po2 = *po2 + 1;
+		if (line[*po2] == b)
+			break ;
 	}
-	dst[ss] = '\0';
-	return (dst);
+	if (line[*po2])
+	{
+		n[*po1] = line[*po2];
+		*po1 = *po1 + 1;
+		*po2 = *po2 + 1;
+	}
+	return (line);
+}
+
+char	*ft_wrap_semicolon(char *line, char *n, int *po2, int *po1)
+{
+	if (line[*po2 - 1] != ' ')
+	{
+		n[*po1] = ' ';
+		*po1 = *po1 + 1;
+	}
+	n[*po1] = line[*po2];
+	*po1 = *po1 + 1;
+	*po2 = *po2 + 1;
+	if (line[*po2] != ' ')
+	{
+		n[*po1 + 1] = ' ';
+		*po1 = *po1 + 2;
+	}
+	return (line);
 }
 
 char	*ft_clean_line(char *line)
 {
-	char	*line_tmp;
+	int		po1;
+	int		po2;
 	char	*n;
 
-	n = (char*)malloc(sizeof(char) * ft_get_c_len(line_tmp = ft_strtrim(line)));
-	n = ft_strclcpy(n, line_tmp);
-	ft_strdel(&line_tmp);
+	po1 = 0;
+	po2 = 0;
+	n = (char*)malloc(sizeof(char) * (ft_get_clen(line)));
+	ft_bzero(n, ft_strlen(line) + 1);
+	while (line[po2])
+	{
+		if (line[po2] == ' ' || line[po2] == '\t')
+			ft_clean_blank(line, n, &po2, &po1);
+		else if (line[po2] == '\'' || line[po2] == '\"')
+			ft_skip_brakets(line, n, &po2, &po1);
+		else if (line[po2] == ';')
+			ft_wrap_semicolon(line, n, &po2, &po1);
+		else
+			n[po1++] = line[po2++];
+	}
+	n[po1] = '\0';
 	return (n);
 }
