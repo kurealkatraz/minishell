@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sto_manipulations.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 16:06:13 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/27 17:28:37 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/27 21:00:48 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_sto	*ft_sto_find_name(t_sto *o, char *name)
+{
+	t_sto	*tmp;
+
+	tmp = o;
+	while (tmp && ft_strcmp(name, tmp->name) != 0)
+		tmp = tmp->next;
+	return (tmp);
+}
 
 void	ft_print_sto(t_sto *pr)
 {

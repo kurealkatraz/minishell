@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
+#    By: nowife <nowife@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/27 17:55:54 by mgras            ###   ########.fr        #
+#    Updated: 2016/01/27 21:29:25 by nowife           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ SRC_NAME =	ft_core.c\
  			ft_env_0.c\
 			ft_sto_manipulations.c\
 			ft_input.c\
+			ft_cleaner.c\
+			ft_colors.c\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft
@@ -30,7 +32,7 @@ INC      = $(addprefix -I, $(INC_PATH))
 LIB      = $(addprefix -L, $(LIB_PATH))
 
 NAME     = minishell
-CC       = gcc
+CC       = clang
 
 CFLAGS = -Wall -Wextra -Werror -g
 LDFLAGS = -lft
