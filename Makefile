@@ -6,13 +6,14 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/26 16:13:53 by mgras            ###   ########.fr        #
+#    Updated: 2016/01/27 17:55:54 by mgras            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_NAME =	ft_core.c\
  			ft_env_0.c\
 			ft_sto_manipulations.c\
+			ft_input.c\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft
