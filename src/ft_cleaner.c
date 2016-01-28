@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 20:23:48 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/28 01:13:27 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 13:12:42 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ char	*ft_wrap_semicolon(char *line, char *n, int *po2, int *po1)
 	*po2 = *po2 + 1;
 	if (line[*po2] != ' ')
 	{
-		n[*po1 + 1] = ' ';
-		*po1 = *po1 + 2;
+		n[*po1] = ' ';
+		*po1 = *po1 + 1;
 	}
 	return (line);
 }
