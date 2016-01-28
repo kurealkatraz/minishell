@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 17:32:25 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/27 23:21:08 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 01:04:46 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_sto	*ft_lex_user_input(char *line, t_sto *input)
 
 	i = 0;
 	clean_line = ft_clean_line(line);
-	line_split = ft_strsplit(clean_line, ' ');
-	ft_strdel(&clean_line);
+	line_split = ft_splitline(clean_line);
+	free(clean_line);
 	while (line_split[i])
 	{
 		input = ft_new_sto(input, NULL, line_split[i]);

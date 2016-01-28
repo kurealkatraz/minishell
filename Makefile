@@ -6,7 +6,7 @@
 #    By: nowife <nowife@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/27 21:29:25 by nowife           ###   ########.fr        #
+#    Updated: 2016/01/28 00:53:05 by nowife           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC_NAME =	ft_core.c\
 			ft_input.c\
 			ft_cleaner.c\
 			ft_colors.c\
+			ft_spliter.c\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft

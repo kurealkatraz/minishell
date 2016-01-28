@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 20:55:33 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/27 21:36:56 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 01:09:42 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_prompt_tree(void)
 		ft_putstr(name);
 	else
 		ft_putstr("You are 2 deep 4 me");
+	free(name);
 	ft_putstr(C_NONE);
 }
 

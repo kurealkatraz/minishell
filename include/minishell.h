@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/27 21:56:36 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 00:52:56 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,12 @@ char				*ft_clean_line(char *line);
 void				ft_prompt_name(t_sto *envp);
 void				ft_prompt_tree(void);
 void				ft_prompt_imput_field(t_sto *envp);
+
+/*
+**	ft_spliter.c
+*/
+int					ft_get_tab_size(char *line);
+int					ft_get_next_mark(char *line, int pos);
+char				**ft_splitline(char *line);
 
 #endif
