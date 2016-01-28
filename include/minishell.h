@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/28 15:29:23 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 18:35:45 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_sto				*ft_free_sto_chain(t_sto *del);
 **	ft_sto_manipulation_1
 */
 t_sto				*ft_rev_sto(t_sto *lst);
+t_sto				*ft_del_one_sto(t_sto *del);
 
 /*
 **	ft_input.c
@@ -76,6 +77,7 @@ char				**ft_splitline(char *line);
 /*
 **	ft_parse.c
 */
+int					ft_get_operation_index(t_sto *cmd);
 t_sto				*ft_get_next_cmd(t_sto *input, t_sto *cmd);
 t_sto				*ft_parse_core(t_sto *input, t_sto *envp);
 
@@ -84,11 +86,19 @@ t_sto				*ft_parse_core(t_sto *input, t_sto *envp);
 */
 int					ft_is_special_character(char c);
 int					ft_is_special_separator(char *s);
+int					ft_is_complex_subcmd(t_sto *subcmd);
 
 /*
-**	ft_regular_cmd.c
+**	ft_cmd.c
 */
 t_sto				*ft_get_next_sub_cmd(t_sto *input, t_sto *cmd);
-t_sto				*ft_regular_cmd_call(t_sto *cmd, t_sto *envp);
+t_sto				*ft_cmd_call(t_sto *cmd, t_sto *envp);
+
+/*
+**	ft_buildtin_env.c
+*/
+int					ft_check_one_envp(t_sto *cmd);
+t_sto				*ft_print_envp(t_sto *cmd, t_sto *envp);
+t_sto				*ft_buildtin_env(t_sto *cmd, t_sto *envp);
 
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nowife <nowife@student.42.fr>              +#+  +:+       +#+         #
+#    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/28 15:29:04 by nowife           ###   ########.fr        #
+#    Updated: 2016/01/28 18:36:01 by mgras            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC_NAME =	ft_core.c\
 			ft_spliter.c\
 			ft_parse.c\
 			ft_utility_0.c\
-			ft_regular_cmd.c\
+			ft_cmd.c\
+			ft_buildtin_env.c\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft

@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_regular_cmd.c                                   :+:      :+:    :+:   */
+/*   ft_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 14:26:48 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/28 15:34:01 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 18:35:08 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"minishell.h"
+#include "minishell.h"
+
+t_sto	*ft_parse_cmd_category(t_sto *cmd, t_sto *envp)
+{
+	if (ft_strcmp(cmd->value, "env") == 0)
+		ft_buildtin_env(cmd, envp);
+	else if (ft_strcmp(cmd->value, "cd") == 0)
+		;//ft_buildtin_cd(cmd, envp);
+	else if (ft_strcmp(cmd->value, "unsetenv") == 0)
+		;//ft_buildtin_unsetenv(cmd, envp);
+	else if (ft_strcmp(cmd->value, "setenv") == 0)
+		;//ft_buildtin_setenv(cmd, envp);
+	else
+		;//ft_native_cmd_call(cmd, envp);
+	return (envp);
+}
 
 t_sto	*ft_get_next_sub_cmd(t_sto *input, t_sto *cmd)
 {
@@ -33,7 +48,7 @@ t_sto	*ft_get_next_sub_cmd(t_sto *input, t_sto *cmd)
 	return (ft_rev_sto(cmd));
 }
 
-t_sto	*ft_regular_cmd_call(t_sto *cmd, t_sto *envp)
+t_sto	*ft_cmd_call(t_sto *cmd, t_sto *envp)
 {
 	t_sto	*sub_cmd;
 	t_sto	*tmp_cmd;
@@ -42,6 +57,7 @@ t_sto	*ft_regular_cmd_call(t_sto *cmd, t_sto *envp)
 	sub_cmd = NULL;
 	while ((sub_cmd = ft_get_next_sub_cmd(tmp_cmd, sub_cmd)))
 	{
+		ft_parse_cmd_category(sub_cmd, envp);
 		sub_cmd = ft_free_sto_chain(sub_cmd);
 		if (ft_strcmp(tmp_cmd->value, ";") == 0)
 			tmp_cmd = tmp_cmd->next;
