@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 17:32:25 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/28 01:04:46 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 01:40:17 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ t_sto	*ft_lex_user_input(char *line, t_sto *input)
 {
 	char	**line_split;
 	char	*clean_line;
+	char	*trim_line;
 	int		i;
 
 	i = 0;
-	clean_line = ft_clean_line(line);
+	trim_line = ft_strtrim(line);
+	clean_line = ft_clean_line(trim_line);
 	line_split = ft_splitline(clean_line);
-	free(clean_line);
+	ft_strdel(&trim_line);
+	ft_strdel(&clean_line);
 	while (line_split[i])
 	{
 		input = ft_new_sto(input, NULL, line_split[i]);
@@ -29,7 +32,7 @@ t_sto	*ft_lex_user_input(char *line, t_sto *input)
 		i++;
 	}
 	free(line_split);
-	return (input);
+	return (ft_rev_sto(input));
 }
 
 t_sto	*ft_input_core(t_sto *envp)

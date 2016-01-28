@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/28 00:52:56 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 01:39:53 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,18 @@ char				*ft_env_value(char *str);
 char				*ft_env_name(char *str);
 
 /*
-**	ft_sto_manipulations.c
+**	ft_sto_manipulation.c
 */
 void				ft_print_sto(t_sto *pr);
 t_sto				*ft_sto_find_name(t_sto *o, char *name);
 t_sto				*ft_new_sto(t_sto *old, char *name, char *value);
 t_sto				*ft_free_one_sto(t_sto *del);
 t_sto				*ft_free_sto_chain(t_sto *del);
+
+/*
+**	ft_sto_manipulation_1
+*/
+t_sto				*ft_rev_sto(t_sto *lst);
 
 /*
 **	ft_input.c
@@ -67,5 +72,11 @@ void				ft_prompt_imput_field(t_sto *envp);
 int					ft_get_tab_size(char *line);
 int					ft_get_next_mark(char *line, int pos);
 char				**ft_splitline(char *line);
+
+/*
+**	ft_parse.c
+*/
+t_sto				*ft_get_next_cmd(t_sto *input, t_sto *cmd);
+t_sto				*ft_parse_core(t_sto *input, t_sto *envp);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 20:55:33 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/28 01:09:42 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 01:33:46 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ void	ft_prompt_imput_field(t_sto *envp)
 
 	swp = envp;
 	ft_prompt_name(swp);
-	ft_putchar(' ');
+	ft_putstr(C_GRAY);
+	ft_putstr(" in ");
+	ft_putstr(C_NONE);
 	ft_prompt_tree();
 	ft_putchar(' ');
 }

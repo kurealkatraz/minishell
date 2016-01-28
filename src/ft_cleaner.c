@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 20:23:48 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/28 00:58:18 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 01:13:27 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_get_clen(char *src)
 		len++;
 	}
 	len += add;
-	return (len + 1);
+	return (len + 2);
 }
 
 char	*ft_clean_blank(char *line, char *n, int *po2, int *po1)
