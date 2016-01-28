@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_buildtin_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 13:38:29 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/28 18:38:26 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/28 23:45:49 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,12 @@ t_sto	*ft_print_envp(t_sto *cmd, t_sto *envp)
 	while (cmd_swp)
 	{
 		if (!ft_check_one_envp(cmd_swp))
-			cmd_swp = ft_del_one_sto(cmd_swp);
-		if (cmd_swp)
-			cmd_swp = cmd_swp->next;
+			ft_strdel(&(cmd_swp->value));
+		cmd_swp = cmd_swp->next;
 	}
 	if (cmd)
 		ft_print_sto(cmd->next);
-	ft_print_sto(envp);
+	ft_print_sto(envp_swp);
 	return (cmd);
 }
 
@@ -63,10 +62,13 @@ t_sto	*ft_buildtin_env(t_sto *cmd, t_sto *envp)
 	t_sto	*cmd_swp;
 
 	cmd_swp = cmd;
+	envp_swp = NULL;
 	operation_index = ft_get_operation_index(cmd_swp);
+	if (cmd_swp->next == NULL)
+		return (ft_print_envp(NULL, envp));
 	envp_swp = ft_strcmp(cmd_swp->next->value, "-i") ? envp : NULL;
 	if (operation_index == 0)
-		ft_print_envp(envp_swp, cmd_swp);
+		ft_print_envp(cmd_swp, envp_swp);
 	else
 		ft_putendl("Comming soon");
 	return (envp);

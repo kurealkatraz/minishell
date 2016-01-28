@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sto_manipulations.c                             :+:      :+:    :+:   */
+/*   ft_sto_manipulation_0.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 16:06:13 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/27 21:00:48 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 23:47:13 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	ft_print_sto(t_sto *pr)
 			ft_putchar('=');
 		if (swp->value)
 			ft_putstr(swp->value);
-		ft_putchar('\n');
+		if (swp->value || swp->name)
+			ft_putchar('\n');
 		swp = swp->next;
 	}
 }

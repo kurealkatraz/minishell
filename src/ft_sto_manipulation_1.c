@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sto_manipulation_1.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 01:33:21 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/28 18:30:43 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/28 23:31:49 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,14 @@ t_sto	*ft_del_one_sto(t_sto *del)
 	t_sto	*p;
 	t_sto	*n;
 
+	if (!del)
+		return (NULL);
 	p = del->prev;
 	n = del->next;
 	del = ft_free_one_sto(del);
-	p->next = n;
-	n->prev = p;
+	if (p)
+		p->next = n;
+	if (n)
+		n->prev = p;
 	return (p);
 }

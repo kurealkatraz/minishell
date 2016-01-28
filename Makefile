@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
+#    By: nowife <nowife@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/28 18:36:01 by mgras            ###   ########.fr        #
+#    Updated: 2016/01/28 23:19:45 by nowife           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ LIB      = $(addprefix -L, $(LIB_PATH))
 NAME     = minishell
 CC       = clang
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -o3
 LDFLAGS = -lft
 
 all: libft $(NAME)
