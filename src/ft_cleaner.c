@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 20:23:48 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/28 13:12:42 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 14:48:09 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_get_clen(char *src)
 	add = 0;
 	while (src[len])
 	{
-		if (src[len] == ';')
+		if (ft_is_special_character(src[len]))
 			add += 2;
 		len++;
 	}
@@ -60,7 +60,7 @@ char	*ft_skip_brakets(char *line, char *n, int *po2, int *po1)
 	return (line);
 }
 
-char	*ft_wrap_semicolon(char *line, char *n, int *po2, int *po1)
+char	*ft_wrap_special(char *line, char *n, int *po2, int *po1)
 {
 	if (line[*po2 - 1] != ' ')
 	{
@@ -70,6 +70,12 @@ char	*ft_wrap_semicolon(char *line, char *n, int *po2, int *po1)
 	n[*po1] = line[*po2];
 	*po1 = *po1 + 1;
 	*po2 = *po2 + 1;
+	if (line[*po2] == line[*po2 - 1])
+	{
+		n[*po1] = line[*po2];
+		*po1 = *po1 + 1;
+		*po2 = *po2 + 1;
+	}
 	if (line[*po2] != ' ')
 	{
 		n[*po1] = ' ';
@@ -94,8 +100,8 @@ char	*ft_clean_line(char *line)
 			ft_clean_blank(line, n, &po2, &po1);
 		else if (line[po2] == '\'' || line[po2] == '\"')
 			ft_skip_brakets(line, n, &po2, &po1);
-		else if (line[po2] == ';')
-			ft_wrap_semicolon(line, n, &po2, &po1);
+		else if (ft_is_special_character(line[po2]))
+			ft_wrap_special(line, n, &po2, &po1);
 		else
 			n[po1++] = line[po2++];
 	}

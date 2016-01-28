@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_utility_0.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/04 22:05:39 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/28 15:31:49 by nowife           ###   ########.fr       */
+/*   Created: 2016/01/28 14:32:48 by nowife            #+#    #+#             */
+/*   Updated: 2016/01/28 14:47:02 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+int		ft_is_special_character(char c)
 {
-	size_t	len;
-	size_t	len2;
-	int		result;
-
-	if (!s1 || !s2)
+	if (c == ';' || c == '>' || c == '<' || c == '|')
+		return (1);
+	else
 		return (0);
-	len = ft_strlen(s1) + 1;
-	len2 = ft_strlen(s2) + 1;
-	len = (len <= len2) ? len : len2;
-	result = ft_memcmp(s1, s2, len);
-	return (result);
+}
+
+int		ft_is_special_separator(char *s)
+{
+	if (ft_is_special_character(s[0]) && s[1] == '\0')
+		return (1);
+	else if (s[0] == '>' || s[0] == '<')
+		if (ft_is_special_character(s[0]) && s[1] == s[0] && s[2] == '\0')
+			return (1);
+	return (0);
 }

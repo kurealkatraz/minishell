@@ -6,7 +6,7 @@
 #    By: nowife <nowife@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/28 01:39:41 by nowife           ###   ########.fr        #
+#    Updated: 2016/01/28 15:29:04 by nowife           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRC_NAME =	ft_core.c\
 			ft_colors.c\
 			ft_spliter.c\
 			ft_parse.c\
+			ft_utility_0.c\
+			ft_regular_cmd.c\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft

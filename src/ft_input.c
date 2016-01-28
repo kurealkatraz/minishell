@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 17:32:25 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/28 01:40:17 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 13:15:45 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_sto	*ft_input_core(t_sto *envp)
 	while (get_next_line(1, &line) > 0)
 	{
 		input = ft_lex_user_input(line, input);
-		ft_print_sto(input);
+		input = ft_parse_core(input, envp);
 		ft_strdel(&line);
 		input = input == NULL ? NULL : ft_free_sto_chain(input);
 		ft_prompt_imput_field(envp);

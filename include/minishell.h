@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/28 01:39:53 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/28 15:29:23 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,17 @@ char				**ft_splitline(char *line);
 */
 t_sto				*ft_get_next_cmd(t_sto *input, t_sto *cmd);
 t_sto				*ft_parse_core(t_sto *input, t_sto *envp);
+
+/*
+**	ft_utility_0.c
+*/
+int					ft_is_special_character(char c);
+int					ft_is_special_separator(char *s);
+
+/*
+**	ft_regular_cmd.c
+*/
+t_sto				*ft_get_next_sub_cmd(t_sto *input, t_sto *cmd);
+t_sto				*ft_regular_cmd_call(t_sto *cmd, t_sto *envp);
 
 #endif
