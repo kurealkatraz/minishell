@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_0.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 16:01:20 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/28 16:29:03 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/29 13:02:10 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ t_sto	*ft_shell_lvls_import(t_sto *envp)
 		swp = swp->next;
 	if (swp == NULL)
 		return (envp = ft_new_sto(envp, "SHLVL", "1"));
-	swp_value = ft_atoi(envp->value) + 1;
-	ft_strdel(&(envp->value));
-	envp->value = ft_itoa(swp_value);
+	swp_value = ft_atoi(swp->value) + 1;
+	ft_strdel(&(swp->value));
+	swp->value = ft_itoa(swp_value);
 	return (envp);
 }
 
