@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utility_0.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 14:32:48 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/29 01:02:34 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/29 18:45:36 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int		ft_get_sto_len(t_sto *sto)
+{
+	t_sto	*swp;
+	int		len;
+
+	swp = sto;
+	len = 0;
+	while (swp)
+	{
+		len++;
+		swp = swp->next;
+	}
+	return (len);
+}
 
 char	**ft_sto_to_tab(t_sto *sto)
 {

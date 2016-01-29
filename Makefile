@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nowife <nowife@student.42.fr>              +#+  +:+       +#+         #
+#    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/29 12:48:06 by nowife           ###   ########.fr        #
+#    Updated: 2016/01/29 18:42:01 by mgras            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC_NAME =	ft_core.c\
 			ft_native_cmd_call.c\
 			ft_buildtin_unsetenv.c\
 			ft_buildtin_setenv.c\
+			ft_buildtin_cd.c\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft

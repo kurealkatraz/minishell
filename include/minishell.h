@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/29 18:23:11 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/29 19:26:43 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ t_sto				*ft_parse_core(t_sto *input, t_sto *envp, int *exit);
 /*
 **	ft_utility_0.c
 */
+int					ft_get_sto_len(t_sto *sto);
 int					ft_is_special_character(char c);
 int					ft_is_special_separator(char *s);
 int					ft_is_complex_subcmd(t_sto *subcmd);
@@ -126,5 +127,11 @@ t_sto				*ft_buildtin_unsetenv(t_sto *cmd, t_sto *envp);
 **	ft_buildtin_setenv.c
 */
 t_sto				*ft_buildtin_setenv(t_sto *cmd, t_sto *envp);
+
+/*
+**	ft_buildtin_cd.c
+*/
+t_sto				*ft_buildtin_cd_error_handling(int err_nb, t_sto *envp);
+t_sto				*ft_buildtin_cd(t_sto *cmd, t_sto *envp);
 
 #endif

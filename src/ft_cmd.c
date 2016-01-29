@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 14:26:48 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/29 18:19:47 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/29 18:54:18 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 t_sto	*ft_parse_cmd_category(t_sto *cmd, t_sto *envp)
 {
+	if (!cmd)
+		return (envp);
 	if (ft_strcmp(cmd->value, "env") == 0)
 		ft_buildtin_env(cmd, envp);
 	else if (ft_strcmp(cmd->value, "cd") == 0)
-		;//ft_buildtin_cd(cmd, envp);
+		ft_buildtin_cd(cmd, envp);
 	else if (ft_strcmp(cmd->value, "unsetenv") == 0)
 		envp = ft_buildtin_unsetenv(cmd->next, envp);
 	else if (ft_strcmp(cmd->value, "setenv") == 0)
