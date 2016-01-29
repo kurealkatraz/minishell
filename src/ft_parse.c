@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 22:01:10 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/28 16:53:08 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/29 02:10:15 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ t_sto	*ft_parse_core(t_sto *input, t_sto *envp)
 	input_swp = input;
 	while ((cmd = ft_get_next_cmd(input_swp, NULL)))
 	{
-		ft_cmd_call(cmd, envp);
+		envp = ft_cmd_call(cmd, envp);
 		cmd = ft_free_sto_chain(cmd);
 		if (ft_strcmp(input_swp->value, ";") == 0)
 			input_swp = input_swp->next;
 		while (input_swp && ft_strcmp(input_swp->value, ";") != 0)
 			input_swp = input_swp->next;
 	}
-	return (input);
+	return (envp);
 }

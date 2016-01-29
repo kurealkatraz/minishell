@@ -1,48 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sto_manipulation_1.c                            :+:      :+:    :+:   */
+/*   ft_buildtin_unsetenv.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/28 01:33:21 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/29 01:58:26 by nowife           ###   ########.fr       */
+/*   Created: 2016/01/29 01:35:05 by nowife            #+#    #+#             */
+/*   Updated: 2016/01/29 02:11:38 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_sto	*ft_rev_sto(t_sto *lst)
+t_sto	*ft_buildtin_unsetenv(t_sto *cmd, t_sto *envp)
 {
-	t_sto	*n;
-	t_sto	*swp;
+	t_sto	*envp_swp;
+	t_sto	*cmd_swp;
+	t_sto	*del_swp;
 
-	swp = lst;
-	n = NULL;
-	if (!lst)
-		return (NULL);
-	while (swp)
+	envp_swp = envp;
+	cmd_swp = cmd;
+	del_swp = NULL;
+	while (cmd_swp)
 	{
-		n = ft_new_sto(n, NULL, swp->value);
-		swp = swp->next;
+		del_swp = ft_sto_find_name(envp_swp, cmd_swp->value);
+		if (del_swp && del_swp->prev == NULL)
+			envp = del_swp->next;
+		ft_del_one_sto(del_swp);
+		cmd_swp = cmd_swp->next;
 	}
-	lst = ft_free_sto_chain(lst);
-	return (n);
-}
-
-t_sto	*ft_del_one_sto(t_sto *del)
-{
-	t_sto	*p;
-	t_sto	*n;
-
-	if (!del)
-		return (NULL);
-	p = del->prev;
-	n = del->next;
-	del = ft_free_one_sto(del);
-	if (p)
-		p->next = n;
-	if (n)
-		n->prev = p;
-	return (p);
+	return (envp);
 }

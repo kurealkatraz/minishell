@@ -6,7 +6,7 @@
 #    By: nowife <nowife@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/29 01:02:02 by nowife           ###   ########.fr        #
+#    Updated: 2016/01/29 01:44:33 by nowife           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC_NAME =	ft_core.c\
 			ft_buildtin_env.c\
 			ft_exec_cmd.c\
 			ft_native_cmd_call.c\
+			ft_buildtin_unsetenv.c\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft

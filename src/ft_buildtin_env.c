@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 13:38:29 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/28 23:45:49 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/29 01:48:54 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ t_sto	*ft_buildtin_env(t_sto *cmd, t_sto *envp)
 
 	cmd_swp = cmd;
 	envp_swp = NULL;
+	if (!envp)
+		return (NULL);
 	operation_index = ft_get_operation_index(cmd_swp);
 	if (cmd_swp->next == NULL)
 		return (ft_print_envp(NULL, envp));

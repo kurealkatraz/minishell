@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 16:06:13 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/28 23:47:13 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/29 01:54:06 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ t_sto	*ft_sto_find_name(t_sto *o, char *name)
 	t_sto	*tmp;
 
 	tmp = o;
-	while (tmp && ft_strcmp(name, tmp->name) != 0)
+	while (tmp)
+	{
+		if (ft_strcmp(name, tmp->name) == 0)
+			return (tmp);
 		tmp = tmp->next;
-	return (tmp);
+	}
+	return (NULL);
 }
 
 void	ft_print_sto(t_sto *pr)
