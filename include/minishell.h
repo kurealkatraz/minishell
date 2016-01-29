@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/29 12:48:31 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/29 18:23:11 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char				**ft_splitline(char *line);
 */
 int					ft_get_operation_index(t_sto *cmd);
 t_sto				*ft_get_next_cmd(t_sto *input, t_sto *cmd);
-t_sto				*ft_parse_core(t_sto *input, t_sto *envp);
+t_sto				*ft_parse_core(t_sto *input, t_sto *envp, int *exit);
 
 /*
 **	ft_utility_0.c

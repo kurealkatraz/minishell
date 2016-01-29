@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_input.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 17:32:25 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/29 02:10:27 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/29 18:25:36 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,21 @@ t_sto	*ft_lex_user_input(char *line, t_sto *input)
 
 t_sto	*ft_input_core(t_sto *envp)
 {
+	int		exit;
 	char	*line;
 	t_sto	*input;
 
 	input = NULL;
 	ft_prompt_imput_field(envp);
+	exit = 1;
 	while (get_next_line(1, &line) > 0)
 	{
 		input = ft_lex_user_input(line, input);
-		envp = ft_parse_core(input, envp);
+		envp = ft_parse_core(input, envp, &exit);
 		ft_strdel(&line);
 		input = input == NULL ? NULL : ft_free_sto_chain(input);
+		if (!exit)
+			break ;
 		ft_prompt_imput_field(envp);
 	}
 	ft_strdel(&line);

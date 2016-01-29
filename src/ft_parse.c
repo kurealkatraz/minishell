@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 22:01:10 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/29 02:10:15 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/29 18:24:56 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_sto	*ft_get_next_cmd(t_sto *input, t_sto *cmd)
 	return (ft_rev_sto(cmd));
 }
 
-t_sto	*ft_parse_core(t_sto *input, t_sto *envp)
+t_sto	*ft_parse_core(t_sto *input, t_sto *envp, int *exit)
 {
 	t_sto	*cmd;
 	t_sto	*input_swp;
@@ -59,6 +59,12 @@ t_sto	*ft_parse_core(t_sto *input, t_sto *envp)
 	input_swp = input;
 	while ((cmd = ft_get_next_cmd(input_swp, NULL)))
 	{
+		if (ft_strcmp(cmd->value, "exit") == 0)
+		{
+			cmd = ft_free_sto_chain(cmd);
+			*exit = 0;
+			break ;
+		}
 		envp = ft_cmd_call(cmd, envp);
 		cmd = ft_free_sto_chain(cmd);
 		if (ft_strcmp(input_swp->value, ";") == 0)

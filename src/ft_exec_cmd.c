@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 00:26:50 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/29 01:28:43 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/29 18:14:14 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
 
 char	*ft_get_next_dir_path(char *path, int *ss)
 {
@@ -22,8 +22,6 @@ char	*ft_get_next_dir_path(char *path, int *ss)
 		return (NULL);
 	while (path[ts] && path[ts] != ':')
 		ts++;
-	if (!path[ts])
-		ts--;
 	ret = ft_strsub(path, *ss, ts - *ss);
 	while (path[*ss] && path[*ss] != ':')
 		*ss = *ss + 1;
