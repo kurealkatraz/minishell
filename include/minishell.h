@@ -6,7 +6,7 @@
 /*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/29 01:45:28 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/29 12:48:31 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,10 @@ t_sto				*ft_native_cmd_call(t_sto *cmd, t_sto *envp);
 **	ft_buildtin_unsetenv.c
 */
 t_sto				*ft_buildtin_unsetenv(t_sto *cmd, t_sto *envp);
+
+/*
+**	ft_buildtin_setenv.c
+*/
+t_sto				*ft_buildtin_setenv(t_sto *cmd, t_sto *envp);
 
 #endif
