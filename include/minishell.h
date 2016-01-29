@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/29 19:26:43 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/29 19:47:12 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_sto				*ft_free_sto_chain(t_sto *del);
 */
 t_sto				*ft_rev_sto(t_sto *lst);
 t_sto				*ft_del_one_sto(t_sto *del);
+t_sto				*ft_change_sto(t_sto *o, t_sto *del, char *n, char *v);
 
 /*
 **	ft_input.c

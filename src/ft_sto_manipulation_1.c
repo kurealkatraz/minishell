@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sto_manipulation_1.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 01:33:21 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/29 01:58:26 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/29 19:47:24 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_sto	*ft_change_sto(t_sto *o, t_sto *del, char *n, char *v)
+{
+	ft_del_one_sto(del);
+	o = ft_new_sto(o, n, v);
+	return (o);
+}
 
 t_sto	*ft_rev_sto(t_sto *lst)
 {
