@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 14:26:48 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/28 18:35:08 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/29 00:26:56 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_sto	*ft_parse_cmd_category(t_sto *cmd, t_sto *envp)
 	else if (ft_strcmp(cmd->value, "setenv") == 0)
 		;//ft_buildtin_setenv(cmd, envp);
 	else
-		;//ft_native_cmd_call(cmd, envp);
+		ft_native_cmd_call(cmd, envp);
 	return (envp);
 }
 

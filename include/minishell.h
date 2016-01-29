@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/28 18:35:45 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/29 01:24:38 by nowife           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "libft.h"
 # include "colors.h"
+# include <sys/types.h>
+# include <dirent.h>
 
 typedef struct		s_sto
 {
@@ -87,6 +89,7 @@ t_sto				*ft_parse_core(t_sto *input, t_sto *envp);
 int					ft_is_special_character(char c);
 int					ft_is_special_separator(char *s);
 int					ft_is_complex_subcmd(t_sto *subcmd);
+char				**ft_sto_to_tab(t_sto *sto);
 
 /*
 **	ft_cmd.c
@@ -100,5 +103,18 @@ t_sto				*ft_cmd_call(t_sto *cmd, t_sto *envp);
 int					ft_check_one_envp(t_sto *cmd);
 t_sto				*ft_print_envp(t_sto *cmd, t_sto *envp);
 t_sto				*ft_buildtin_env(t_sto *cmd, t_sto *envp);
+
+/*
+**	ft_exec_cmd.c
+*/
+char				*ft_get_next_dir_path(char *path, int *ss);
+char				*ft_seek_path_list(char *cmd, char *path);
+char				*ft_get_exec_path(char *cmd, t_sto *envp);
+t_sto				*ft_exec_subcmd(char *cmd, t_sto *arg, t_sto *evp);
+
+/*
+**	ft_native_cmd_call.c
+*/
+t_sto				*ft_native_cmd_call(t_sto *cmd, t_sto *envp);
 
 #endif
