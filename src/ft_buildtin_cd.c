@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 12:52:05 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/30 14:55:44 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 17:14:49 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,25 +85,6 @@ t_sto	*ft_buildtin_cd_return_home(t_sto *envp)
 	else
 		envp = ft_change_sto(envp, old_pwd, "OLDPWD", cwd);
 	chdir(home->value);
-	return (envp);
-}
-
-t_sto	*ft_buildtin_cd_error_handling(int err_nb, t_sto *envp)
-{
-	ft_putstr(C_BOLD);
-	ft_putstr(C_RED);
-	ft_putstr("ERROR ");
-	ft_putstr("in buildtin cd ");
-	ft_putstr(C_CYAN);
-	if (err_nb == 001)
-		ft_putendl("The number of arguments are invalid");
-	else if (err_nb == 002)
-		ft_putendl("The argument is either not here or has been denied access");
-	else if (err_nb == 003)
-		ft_putendl("There is no more OLDPWD in the env, or it's invalid");
-	else if (err_nb == 004)
-		ft_putendl("There is no more HOME in the env, or it's invalid");
-	ft_putstr(C_NONE);
 	return (envp);
 }
 

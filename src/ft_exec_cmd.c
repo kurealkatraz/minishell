@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 00:26:50 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/30 16:36:18 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 17:22:03 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,20 @@ char	*ft_get_exec_path(char *cmd, t_sto *envp)
 			return (cmd);
 	path_list = ft_sto_find_name(envp, "PATH");
 	if (!path_list)
+	{
+		ft_exec_error_handling(002, NULL, NULL);
 		return (NULL);
+	}
 	return (ft_seek_path_list(cmd, path_list->value));
 }
 
 void	ft_exec_single(char *bin, char **argv, char **envp)
 {
-	pid_t	child;
+	pid_t	father;
 	int		sys;
 
-	child = fork();
-	if (child == 0)
+	father = fork();
+	if (!father)
 	{
 		execve(bin, argv, envp);
 		kill(getpid(), SIGKILL);
@@ -95,7 +98,10 @@ t_sto	*ft_exec_subcmd(char *cmd, t_sto *arg, t_sto *evp)
 	char	*path;
 
 	if (!(path = ft_get_exec_path(cmd, evp)))
+	{
+		ft_exec_error_handling(001, arg, evp);
 		return (evp);
+	}
 	argv = ft_sto_to_tab(arg);
 	envp = ft_sto_to_tab(evp);
 	ft_exec_single(path, argv, envp);

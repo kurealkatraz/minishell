@@ -6,12 +6,13 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/30 16:37:42 by mgras            ###   ########.fr        #
+#    Updated: 2016/01/30 17:16:05 by mgras            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_NAME =	ft_core.c\
  			ft_env_0.c\
+			ft_error_handling.c\
 			ft_sto_manipulation_0.c\
 			ft_sto_manipulation_1.c\
 			ft_input.c\
