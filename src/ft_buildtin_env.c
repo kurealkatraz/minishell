@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_buildtin_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 13:38:29 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/29 01:48:54 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/30 17:57:22 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,51 @@ t_sto	*ft_print_envp(t_sto *cmd, t_sto *envp)
 	return (cmd);
 }
 
+t_sto	*ft_scmd_op(t_sto *cmd)
+{
+	t_sto	*cmd_swp;
+
+	cmd_swp = cmd;
+	while (cmd_swp->value[0] == '-')
+		cmd_swp = cmd_swp->next;
+	return (cmd_swp);
+}
+
+t_sto	*ft_env_select_proc(t_sto *cmd, t_sto *envp, char *path, t_sto *e_swp)
+{
+	t_sto	*cmd_swp;
+	int		operation_index;
+
+	cmd_swp = cmd;
+	operation_index = ft_get_operation_index(cmd_swp);
+	e_swp = ft_strcmp(cmd_swp->next->value, "-i") ? envp : NULL;
+	if (operation_index == 0 && !path)
+		ft_print_envp(cmd_swp, e_swp);
+	else if (path && operation_index == 0)
+	{
+		cmd_swp = ft_scmd_op(cmd->next);
+		ft_exec_subcmd(cmd_swp->value, cmd_swp, envp, e_swp);
+	}
+	else
+		ft_putendl("Comming soon");
+	if (path)
+		ft_strdel(&path);
+	return (envp);
+}
+
 t_sto	*ft_buildtin_env(t_sto *cmd, t_sto *envp)
 {
-	int		operation_index;
+	char	*path;
 	t_sto	*envp_swp;
 	t_sto	*cmd_swp;
 
 	cmd_swp = cmd;
 	envp_swp = NULL;
+	path = ft_get_exec_path(ft_scmd_op(cmd->next)->value, envp);
 	if (!envp)
 		return (NULL);
-	operation_index = ft_get_operation_index(cmd_swp);
 	if (cmd_swp->next == NULL)
 		return (ft_print_envp(NULL, envp));
-	envp_swp = ft_strcmp(cmd_swp->next->value, "-i") ? envp : NULL;
-	if (operation_index == 0)
-		ft_print_envp(cmd_swp, envp_swp);
-	else
-		ft_putendl("Comming soon");
+	envp = ft_env_select_proc(cmd, envp, path, envp_swp);
 	return (envp);
 }

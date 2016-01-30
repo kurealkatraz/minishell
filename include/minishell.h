@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/30 17:21:01 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 17:33:37 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ t_sto				*ft_buildtin_env(t_sto *cmd, t_sto *envp);
 char				*ft_get_next_dir_path(char *path, int *ss);
 char				*ft_seek_path_list(char *cmd, char *path);
 char				*ft_get_exec_path(char *cmd, t_sto *envp);
-t_sto				*ft_exec_subcmd(char *cmd, t_sto *arg, t_sto *evp);
+t_sto				*ft_exec_subcmd(char *cmd, t_sto *arg, t_sto *evp,
+									t_sto *exec_envp);
 
 /*
 **	ft_native_cmd_call.c

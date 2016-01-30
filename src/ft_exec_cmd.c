@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 00:26:50 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/30 17:22:03 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 17:34:56 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,19 +91,21 @@ void	ft_exec_single(char *bin, char **argv, char **envp)
 		wait(&sys);
 }
 
-t_sto	*ft_exec_subcmd(char *cmd, t_sto *arg, t_sto *evp)
+t_sto	*ft_exec_subcmd(char *cmd, t_sto *arg, t_sto *evp, t_sto *exec_envp)
 {
 	char	**envp;
 	char	**argv;
 	char	*path;
 
+	if (!evp)
+		return (ft_exec_error_handling(003, arg, evp));
 	if (!(path = ft_get_exec_path(cmd, evp)))
 	{
 		ft_exec_error_handling(001, arg, evp);
 		return (evp);
 	}
 	argv = ft_sto_to_tab(arg);
-	envp = ft_sto_to_tab(evp);
+	envp = ft_sto_to_tab(exec_envp);
 	ft_exec_single(path, argv, envp);
 	return (evp);
 }
