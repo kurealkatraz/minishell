@@ -6,7 +6,7 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/29 18:42:01 by mgras            ###   ########.fr        #
+#    Updated: 2016/01/30 16:37:42 by mgras            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC_NAME =	ft_core.c\
 			ft_spliter.c\
 			ft_parse.c\
 			ft_utility_0.c\
+			ft_utility_1.c\
 			ft_cmd.c\
 			ft_buildtin_env.c\
 			ft_exec_cmd.c\

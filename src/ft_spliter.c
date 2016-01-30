@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_spliter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 00:33:42 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/28 01:08:50 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/30 16:59:13 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,16 @@ int		ft_get_tab_size(char *line)
 
 int		ft_get_next_mark(char *line, int pos)
 {
+	char	bracket;
+
 	pos++;
+	if (line[pos] == '\'' || line[pos] == '\"')
+	{
+		bracket = line[pos++];
+		while (line[pos] != bracket)
+			pos++;
+		return (pos);
+	}
 	while (line[pos] && line[pos] != ' ')
 		pos++;
 	return (pos);

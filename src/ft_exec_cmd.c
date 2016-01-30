@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 00:26:50 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/30 15:47:21 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 16:36:18 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,6 @@ void	ft_exec_single(char *bin, char **argv, char **envp)
 	}
 	else
 		wait(&sys);
-}
-
-void	ft_print_char_tab(char **argv)
-{
-	int		i;
-
-	i = 0;
-	while (argv[i])
-		ft_putendl(argv[i++]);
 }
 
 t_sto	*ft_exec_subcmd(char *cmd, t_sto *arg, t_sto *evp)

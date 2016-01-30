@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 17:32:25 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/29 18:25:36 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 16:45:36 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_sto	*ft_lex_user_input(char *line, t_sto *input)
 	i = 0;
 	trim_line = ft_strtrim(line);
 	clean_line = ft_clean_line(trim_line);
-	line_split = ft_splitline(clean_line);
+	ft_print_char_tab(line_split = ft_splitline(clean_line));
 	ft_strdel(&trim_line);
 	ft_strdel(&clean_line);
 	while (line_split[i])
