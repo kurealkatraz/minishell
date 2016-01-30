@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 13:38:29 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/30 18:50:11 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 19:30:04 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,17 +97,14 @@ t_sto	*ft_has_cmd(t_sto *cmd, t_sto *envp)
 	envp_swp = envp;
 	while (cmd_swp)
 	{
-		if (ft_strcmp(cmd_swp->value, "env"))
+		if (ft_strcmp(cmd_swp->value, "env") == 0)
 			;
 		else if (cmd_swp->value[0] == '-')
 			;
-		else if (!ft_check_one_envp(cmd_swp))
+		else if ((tmp = ft_get_exec_path(cmd_swp->value, envp_swp)))
 		{
-			if ((tmp = ft_get_exec_path(cmd_swp->value, envp_swp)))
-			{
-				ft_strdel(&tmp);
-				return (cmd_swp);
-			}
+			ft_strdel(&tmp);
+			return (cmd_swp);
 		}
 		cmd_swp = cmd_swp->next;
 	}
@@ -123,17 +120,17 @@ t_sto	*ft_env_select_proc(t_sto *cmd, t_sto *envp, char *path)
 	cmd_swp = cmd;
 	operation_index = ft_get_operation_index(cmd);
 	envp_swp = ft_get_env_options(cmd) == 01 ? NULL : envp;
-	if (operation_index == 0 && !ft_has_cmd(cmd, envp))
+	if (operation_index == 0 && !ft_has_cmd(cmd->next, envp))
 	{
-		ft_print_envp(cmd, envp);
+		ft_print_envp(ft_skip_cmd_options(cmd->next), envp);
 		return (envp);
 	}
-	path = ft_strdup(ft_has_cmd(cmd, envp)->value);
+	path = ft_strdup(ft_has_cmd(cmd->next, envp)->value);
 	if (operation_index == 0 && path)
 	{
-		cmd_swp = ft_skip_cmd_options(cmd);
+		cmd_swp = ft_has_cmd(cmd->next, envp);
 		envp_swp = ft_sto_join(envp, cmd, cmd_swp);
-		ft_exec_subcmd(cmd_swp->value, cmd_swp, envp, envp_swp);
+		ft_exec_subcmd(path, cmd_swp, envp, envp_swp);
 		ft_free_sto_chain(envp_swp);
 		return (envp);
 	}
