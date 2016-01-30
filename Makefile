@@ -6,7 +6,7 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/30 17:16:05 by mgras            ###   ########.fr        #
+#    Updated: 2016/01/30 19:51:10 by mgras            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC_NAME =	ft_core.c\
 			ft_utility_0.c\
 			ft_utility_1.c\
 			ft_cmd.c\
-			ft_buildtin_env.c\
+			ft_buildtin_env_0.c\
+			ft_buildtin_env_1.c\
 			ft_exec_cmd.c\
 			ft_native_cmd_call.c\
 			ft_buildtin_unsetenv.c\

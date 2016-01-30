@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/30 18:51:05 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 19:55:38 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,19 @@ t_sto				*ft_get_next_sub_cmd(t_sto *input, t_sto *cmd);
 t_sto				*ft_cmd_call(t_sto *cmd, t_sto *envp);
 
 /*
-**	ft_buildtin_env.c
+**	ft_buildtin_env_0.c
+*/
+t_sto	*ft_has_cmd(t_sto *cmd, t_sto *envp);
+t_sto	*ft_env_select_proc(t_sto *cmd, t_sto *envp, char *path);
+t_sto	*ft_buildtin_env(t_sto *cmd, t_sto *envp);
+
+/*
+**	ft_buildtin_env_1.c\
 */
 int					ft_check_one_envp(t_sto *cmd);
 t_sto				*ft_print_envp(t_sto *cmd, t_sto *envp);
-t_sto				*ft_buildtin_env(t_sto *cmd, t_sto *envp);
+t_sto				*ft_skip_cmd_options(t_sto *cmd);
+int					ft_get_env_options(t_sto *cmd, t_sto *lim);
 
 /*
 **	ft_exec_cmd.c
