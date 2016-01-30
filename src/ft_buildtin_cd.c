@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 12:52:05 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/29 19:53:00 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 14:55:44 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ t_sto	*ft_buildtin_cd_return_old(t_sto *envp)
 	if (!pwd)
 		envp = ft_new_sto(envp, "PWD", old_pwd->value);
 	else
-	{
-		ft_del_one_sto(pwd);
-		envp = ft_new_sto(envp, "PWD", old_pwd->value);
-	}
+		envp = ft_change_sto(envp, pwd, "PWD", old_pwd->value);
 	ft_strdel(&(old_pwd->value));
 	old_pwd->value = ft_strdup(cwd);
 	chdir(pwd->value);
