@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 14:32:48 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/29 18:45:36 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 15:40:47 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ char	**ft_sto_to_tab(t_sto *sto)
 	swp = sto;
 	while (swp)
 	{
-		tab[i++] = ft_strdup(swp->value);
+		if (sto->name)
+			tab[i++] = ft_strjoin(swp->name, ft_strjoin("=", swp->value));
+		else
+			tab[i++] = ft_strdup(swp->value);
 		swp = swp->next;
 	}
 	tab[i] = NULL;

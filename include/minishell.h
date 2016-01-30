@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/29 19:47:12 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 15:04:44 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "colors.h"
 # include <sys/types.h>
 # include <dirent.h>
+# include <signal.h>
 
 typedef struct		s_sto
 {
@@ -92,6 +93,7 @@ int					ft_is_special_character(char c);
 int					ft_is_special_separator(char *s);
 int					ft_is_complex_subcmd(t_sto *subcmd);
 char				**ft_sto_to_tab(t_sto *sto);
+char				**ft_free_char_tab(char **tab);
 
 /*
 **	ft_cmd.c

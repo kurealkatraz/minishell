@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 00:26:50 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/29 18:14:14 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 15:47:21 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ char	*ft_seek_path_list(char *cmd, char *path)
 {
 	int				i;
 	char			*open;
+	char			*ret;
 	DIR				*opnd;
 	struct dirent	*dir;
 
 	open = NULL;
+	ret = NULL;
 	i = 0;
 	while ((open = ft_get_next_dir_path(path, &i)))
 	{
@@ -46,7 +48,7 @@ char	*ft_seek_path_list(char *cmd, char *path)
 			if (ft_strcmp(dir->d_name, cmd) == 0)
 			{
 				closedir(opnd);
-				return (ft_strdup(dir->d_name));
+				return (ft_strjoin(open, ft_strjoin("/", dir->d_name)));
 			}
 		}
 		closedir(opnd);
@@ -71,6 +73,30 @@ char	*ft_get_exec_path(char *cmd, t_sto *envp)
 	return (ft_seek_path_list(cmd, path_list->value));
 }
 
+void	ft_exec_single(char *bin, char **argv, char **envp)
+{
+	pid_t	child;
+	int		sys;
+
+	child = fork();
+	if (child == 0)
+	{
+		execve(bin, argv, envp);
+		kill(getpid(), SIGKILL);
+	}
+	else
+		wait(&sys);
+}
+
+void	ft_print_char_tab(char **argv)
+{
+	int		i;
+
+	i = 0;
+	while (argv[i])
+		ft_putendl(argv[i++]);
+}
+
 t_sto	*ft_exec_subcmd(char *cmd, t_sto *arg, t_sto *evp)
 {
 	char	**envp;
@@ -81,6 +107,6 @@ t_sto	*ft_exec_subcmd(char *cmd, t_sto *arg, t_sto *evp)
 		return (evp);
 	argv = ft_sto_to_tab(arg);
 	envp = ft_sto_to_tab(evp);
-	ft_putendl(path);
+	ft_exec_single(path, argv, envp);
 	return (evp);
 }

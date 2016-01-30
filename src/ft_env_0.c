@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_0.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nowife <nowife@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 16:01:20 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/29 13:02:10 by nowife           ###   ########.fr       */
+/*   Updated: 2016/01/30 15:13:28 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,13 @@ t_sto	*ft_import_native_envp(t_sto *envp, char **native_envp)
 	name_tmp = NULL;
 	value_tmp = NULL;
 	while (native_envp[i])
-		i++;
-	while (--i > 0)
 	{
 		name_tmp = ft_env_name(native_envp[i]);
 		value_tmp = ft_env_value(native_envp[i]);
 		envp = ft_new_sto(envp, name_tmp, value_tmp);
 		ft_strdel(&name_tmp);
 		ft_strdel(&value_tmp);
+		i++;
 	}
 	return (envp);
 }
