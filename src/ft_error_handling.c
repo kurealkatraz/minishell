@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 17:14:23 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/30 19:37:04 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 19:57:58 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,7 @@ t_sto	*ft_buildtin_env_error_handling(int err_nb, t_sto *cmd, t_sto *envp)
 	if (err_nb == 001)
 	{
 		ft_putstr("envp added argument ");
-		ft_putstr(C_MAGENTA);
 		ft_putstr(cmd->value);
-		ft_putstr(C_CYAN);
 		ft_putendl(" is not valid it will be skipped");
 	}
 	else if (err_nb == 002)
@@ -55,9 +53,7 @@ t_sto	*ft_buildtin_env_error_handling(int err_nb, t_sto *cmd, t_sto *envp)
 	else if (err_nb == 004)
 	{
 		ft_putstr("The follow line ");
-		ft_putstr(C_MAGENTA);
 		ft_putstr(cmd->value);
-		ft_putstr(C_CYAN);
 		ft_putendl(" contains unvalid options that will be ignored");
 	}
 	ft_putstr(C_NONE);
