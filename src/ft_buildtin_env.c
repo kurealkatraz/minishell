@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 13:38:29 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/30 19:30:04 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 19:47:35 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_sto	*ft_print_envp(t_sto *cmd, t_sto *envp)
 		cmd_swp = cmd_swp->next;
 	}
 	if (cmd)
-		ft_print_sto(cmd->next);
+		ft_print_sto(cmd);
 	ft_print_sto(envp_swp);
 	return (cmd);
 }
@@ -63,7 +63,8 @@ t_sto	*ft_skip_cmd_options(t_sto *cmd)
 	t_sto	*cmd_swp;
 
 	cmd_swp = cmd;
-	while (cmd_swp->value[0] == '-')
+	while (cmd_swp &&
+		(cmd_swp->value[0] == '-' || ft_strcmp(cmd_swp->value, "env") == 0))
 		cmd_swp = cmd_swp->next;
 	return (cmd_swp);
 }
@@ -72,18 +73,24 @@ int		ft_get_env_options(t_sto *cmd)
 {
 	t_sto	*cmd_swp;
 	int		i;
+	int		ret;
 
 	cmd_swp = cmd;
+	ret = 0;
 	while (cmd_swp)
 	{
 		i = 1;
 		if (cmd_swp->value[0] == '-')
 			while (cmd_swp->value[i])
+			{
 				if (cmd_swp->value[i++] == 'i')
-					return (1);
+					ret = 1;
+				else
+					ft_buildtin_env_error_handling(004, cmd_swp, NULL);
+			}
 		cmd_swp = cmd_swp->next;
 	}
-	return (0);
+	return (ret);
 }
 
 t_sto	*ft_has_cmd(t_sto *cmd, t_sto *envp)
@@ -122,7 +129,7 @@ t_sto	*ft_env_select_proc(t_sto *cmd, t_sto *envp, char *path)
 	envp_swp = ft_get_env_options(cmd) == 01 ? NULL : envp;
 	if (operation_index == 0 && !ft_has_cmd(cmd->next, envp))
 	{
-		ft_print_envp(ft_skip_cmd_options(cmd->next), envp);
+		ft_print_envp(ft_skip_cmd_options(cmd), envp_swp);
 		return (envp);
 	}
 	path = ft_strdup(ft_has_cmd(cmd->next, envp)->value);

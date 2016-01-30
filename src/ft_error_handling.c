@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 17:14:23 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/30 18:08:03 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 19:37:04 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,16 @@ t_sto	*ft_buildtin_env_error_handling(int err_nb, t_sto *cmd, t_sto *envp)
 	}
 	else if (err_nb == 002)
 		ft_putendl("Can't find the PATH variable");
-	else if (err_nb == 002)
+	else if (err_nb == 003)
 		ft_putendl("There is no Env");
+	else if (err_nb == 004)
+	{
+		ft_putstr("The follow line ");
+		ft_putstr(C_MAGENTA);
+		ft_putstr(cmd->value);
+		ft_putstr(C_CYAN);
+		ft_putendl(" contains unvalid options that will be ignored");
+	}
 	ft_putstr(C_NONE);
 	return (envp);
 }
