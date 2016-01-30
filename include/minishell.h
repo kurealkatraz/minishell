@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/30 17:33:37 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 18:51:05 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_sto				*ft_free_sto_chain(t_sto *del);
 t_sto				*ft_rev_sto(t_sto *lst);
 t_sto				*ft_del_one_sto(t_sto *del);
 t_sto				*ft_change_sto(t_sto *o, t_sto *del, char *n, char *v);
+t_sto				*ft_sto_join(t_sto *sto1, t_sto *sto2, t_sto *lim);
 
 /*
 **	ft_input.c
@@ -149,6 +150,8 @@ t_sto				*ft_buildtin_cd_return_home(t_sto *envp);
 **	ft_error_handling.c\
 */
 t_sto				*ft_buildtin_cd_error_handling(int err_nb, t_sto *envp);
+t_sto				*ft_buildtin_env_error_handling(int err_nb, t_sto *cmd,
+													t_sto *envp);
 t_sto				*ft_exec_error_handling(int err_nb, t_sto *cmd, t_sto *evp);
 
 #endif

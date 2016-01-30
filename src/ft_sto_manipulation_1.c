@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 01:33:21 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/30 14:52:53 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 18:52:56 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,27 @@ t_sto	*ft_del_one_sto(t_sto *del)
 	if (n)
 		n->prev = p;
 	return (p);
+}
+
+t_sto	*ft_sto_join(t_sto *sto1, t_sto *sto2, t_sto *lim)
+{
+	t_sto	*n;
+	t_sto	*swp1;
+	t_sto	*swp2;
+
+	n = NULL;
+	swp1 = sto1;
+	swp2 = sto2;
+	while (swp1)
+	{
+		n = ft_new_sto(n, swp1->name, swp1->value);
+		swp1 = swp1->next;
+	}
+	while (swp2 != lim)
+	{
+		if (ft_check_one_envp(swp2))
+			n = ft_new_sto(n, ft_env_name(swp2->value), ft_env_value(swp2->value));
+		swp2 = swp2->next;
+	}
+	return (ft_rev_sto(n));
 }

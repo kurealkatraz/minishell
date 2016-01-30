@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 17:14:23 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/30 17:35:31 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 18:08:03 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_sto	*ft_buildtin_cd_error_handling(int err_nb, t_sto *envp)
 	ft_putstr(C_BOLD);
 	ft_putstr(C_RED);
 	ft_putstr("ERROR ");
-	ft_putstr("in buildtin cd ");
+	ft_putstr("in the buildtin cd process ");
 	ft_putstr(C_NONE);
 	ft_putstr(C_CYAN);
 	if (err_nb == 001)
@@ -28,6 +28,30 @@ t_sto	*ft_buildtin_cd_error_handling(int err_nb, t_sto *envp)
 		ft_putendl("There is no more OLDPWD in the env, or it's invalid");
 	else if (err_nb == 004)
 		ft_putendl("There is no more HOME in the env, or it's invalid");
+	ft_putstr(C_NONE);
+	return (envp);
+}
+
+t_sto	*ft_buildtin_env_error_handling(int err_nb, t_sto *cmd, t_sto *envp)
+{
+	ft_putstr(C_BOLD);
+	ft_putstr(C_RED);
+	ft_putstr("ERROR ");
+	ft_putstr("in the buildtin env process ");
+	ft_putstr(C_NONE);
+	ft_putstr(C_CYAN);
+	if (err_nb == 001)
+	{
+		ft_putstr("envp added argument ");
+		ft_putstr(C_MAGENTA);
+		ft_putstr(cmd->value);
+		ft_putstr(C_CYAN);
+		ft_putendl(" is not valid it will be skipped");
+	}
+	else if (err_nb == 002)
+		ft_putendl("Can't find the PATH variable");
+	else if (err_nb == 002)
+		ft_putendl("There is no Env");
 	ft_putstr(C_NONE);
 	return (envp);
 }
