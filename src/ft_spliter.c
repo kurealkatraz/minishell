@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 00:33:42 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/30 16:59:13 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/30 17:05:21 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ int		ft_get_next_mark(char *line, int pos)
 	char	bracket;
 
 	pos++;
+	pos = pos == 1 && (line[pos] == '\'' || line[pos] == '\"') ? 0 : pos;
 	if (line[pos] == '\'' || line[pos] == '\"')
 	{
 		bracket = line[pos++];
 		while (line[pos] != bracket)
 			pos++;
-		return (pos);
+		return (pos + 1);
 	}
 	while (line[pos] && line[pos] != ' ')
 		pos++;
