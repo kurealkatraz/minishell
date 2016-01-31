@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 17:14:23 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/30 19:57:58 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/31 14:42:19 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,25 @@ t_sto	*ft_buildtin_env_error_handling(int err_nb, t_sto *cmd, t_sto *envp)
 		ft_putstr("The follow line ");
 		ft_putstr(cmd->value);
 		ft_putendl(" contains unvalid options that will be ignored");
+	}
+	ft_putstr(C_NONE);
+	return (envp);
+}
+
+t_sto	*ft_buildtin_unsetenv_error_handling(int err_nb, t_sto *c, t_sto *envp)
+{
+	ft_putstr(C_BOLD);
+	ft_putstr(C_RED);
+	ft_putstr("ERROR ");
+	ft_putstr("in the buildtin unsetenv process ");
+	ft_putstr(C_NONE);
+	ft_putstr(C_CYAN);
+	if (err_nb == 001)
+		ft_putendl("There is no more env variable to unset ");
+	else if (err_nb == 002)
+	{
+		ft_putstr("Can't find the asked variable : ");
+		ft_putendl(c->value);
 	}
 	ft_putstr(C_NONE);
 	return (envp);

@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 00:26:50 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/30 17:34:56 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/31 14:45:26 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_sto	*ft_exec_subcmd(char *cmd, t_sto *arg, t_sto *evp, t_sto *exec_envp)
 	char	**argv;
 	char	*path;
 
-	if (!evp)
+	if (!evp && !ft_get_exec_path(cmd, evp))
 		return (ft_exec_error_handling(003, arg, evp));
 	if (!(path = ft_get_exec_path(cmd, evp)))
 	{

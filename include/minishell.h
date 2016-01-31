@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:18:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/30 19:58:11 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/31 14:42:44 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,8 @@ t_sto				*ft_buildtin_cd_return_home(t_sto *envp);
 */
 t_sto				*ft_buildtin_cd_error_handling(int err_nb, t_sto *envp);
 t_sto				*ft_buildtin_env_error_handling(int err_nb, t_sto *cmd,
+													t_sto *envp);
+t_sto				*ft_buildtin_unsetenv_error_handling(int err_nb, t_sto *c,
 													t_sto *envp);
 t_sto				*ft_exec_error_handling(int err_nb, t_sto *cmd, t_sto *evp);
 
