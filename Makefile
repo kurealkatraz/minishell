@@ -6,7 +6,7 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:03:04 by mgras             #+#    #+#              #
-#    Updated: 2016/01/30 19:51:10 by mgras            ###   ########.fr        #
+#    Updated: 2016/01/31 15:00:45 by mgras            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC_NAME =	ft_core.c\
 			ft_buildtin_unsetenv.c\
 			ft_buildtin_setenv.c\
 			ft_buildtin_cd.c\
+			ft_signal_handler.c\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft

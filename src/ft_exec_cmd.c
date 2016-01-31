@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 00:26:50 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/31 14:45:26 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/31 15:11:11 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,10 @@ void	ft_exec_single(char *bin, char **argv, char **envp)
 	int		sys;
 
 	father = fork();
+	signal(SIGINT, ft_signal_parent_handler);
 	if (!father)
 	{
+		signal(SIGINT, ft_signal_child_handler);
 		execve(bin, argv, envp);
 		kill(getpid(), SIGKILL);
 	}
