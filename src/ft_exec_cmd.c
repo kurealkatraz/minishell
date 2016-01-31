@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 00:26:50 by nowife            #+#    #+#             */
-/*   Updated: 2016/01/31 15:11:11 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/31 15:18:25 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ t_sto	*ft_exec_subcmd(char *cmd, t_sto *arg, t_sto *evp, t_sto *exec_envp)
 		ft_exec_error_handling(001, arg, evp);
 		return (evp);
 	}
+	if (access(path, X_OK) == -1)
+		return (ft_exec_error_handling(004, NULL, evp));
 	argv = ft_sto_to_tab(arg);
 	envp = ft_sto_to_tab(exec_envp);
 	ft_exec_single(path, argv, envp);

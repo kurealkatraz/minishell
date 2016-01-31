@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 17:14:23 by mgras             #+#    #+#             */
-/*   Updated: 2016/01/31 14:42:19 by mgras            ###   ########.fr       */
+/*   Updated: 2016/01/31 15:17:21 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,10 @@ t_sto	*ft_exec_error_handling(int err_nb, t_sto *cmd, t_sto *evp)
 	}
 	else if (err_nb == 002)
 		ft_putendl("Can't find the PATH variable");
-	else if (err_nb == 002)
+	else if (err_nb == 003)
 		ft_putendl("There is no Env");
+	else if (err_nb == 004)
+		ft_putendl("You do not have the rights to execute this binary, sorry");
 	ft_putstr(C_NONE);
 	return (evp);
 }
